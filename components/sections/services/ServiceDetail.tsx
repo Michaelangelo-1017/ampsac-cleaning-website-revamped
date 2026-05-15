@@ -42,7 +42,7 @@ export default function ServiceDetail({
   return (
     <section
       id={id}
-      className={cn("relative section-pad overflow-hidden scroll-mt-28 pb-200px", sectionCls)}
+      className={cn("relative section-pad overflow-hidden scroll-mt-28", sectionCls)}
     >
       {isDark && <div className="grain-overlay" />}
 
