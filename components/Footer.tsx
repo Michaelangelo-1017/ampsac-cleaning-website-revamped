@@ -169,12 +169,12 @@ export default function Footer() {
           <p className="text-xs tracking-wide text-pearl/40">
             Powered by{" "}
             <a
-              href="https://goadtechnologies.com/"
+              href="https://michaelangelo-digital.co.uk/"
               target="_blank"
               rel="noopener"
               className="text-gold/80 hover:text-gold transition-colors"
             >
-              goadtechnologies.com
+              Michaelangelo Digital
             </a>
           </p>
         </motion.div>

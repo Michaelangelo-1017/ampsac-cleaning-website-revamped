@@ -6,7 +6,7 @@ export const SITE = {
   name: "AMPSAC City Clean",
   legalName: "AMPSAC City Clean Limited",
   domain: "https://ampsaccleaning.com",
-  email: "info@ampsaccityclean.com",
+  email: "ampsaccityclean.com@ampsaccityclean.com",
   phones: [
     { label: "+44 7760 313 757", href: "tel:+447760313757" },
     { label: "+44 7576 369 132", href: "tel:+447576369132" },
@@ -45,7 +45,7 @@ export const HOME_SERVICES = [
     description:
       "We provide comprehensive office cleaning services tailored to your specific needs. Our professional team ensures that your workspace is clean, hygienic, and welcoming for both employees and visitors.",
     image:
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "/images/servicesImage/office-cleaning.jpeg",
     link: "/services#office",
     color: "#0077B6",
     features: [
@@ -64,7 +64,7 @@ export const HOME_SERVICES = [
     description:
       "Our residential cleaning services give you back your free time while ensuring your home is spotlessly clean. From regular maintenance to deep cleaning, our team will make your home shine from top to bottom.",
     image:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "/images/servicesImage/hotel-cleaning.jpeg",
     link: "/services#residential",
     color: "#00B4D8",
     features: [
@@ -83,7 +83,7 @@ export const HOME_SERVICES = [
     description:
       "Maintain a professional image with our commercial cleaning services. We understand the unique needs of different commercial spaces and provide customized cleaning programs that address your specific requirements.",
     image:
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "/images/servicesImage/shop-cleaning.jpeg",
     link: "/services#commercial",
     color: "#0096C7",
     features: [
@@ -102,7 +102,7 @@ export const HOME_SERVICES = [
     description:
       "For unique cleaning challenges, we offer specialized services that address specific needs with tailored approaches and appropriate equipment. No job is too difficult for our dedicated specialists.",
     image:
-      "https://images.unsplash.com/photo-1521783593447-5702b9bfd267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/images/servicesImage/garage-cleaning.jpeg",
     link: "/services#specialized",
     color: "#48CAE4",
     features: [
@@ -125,7 +125,7 @@ export const SERVICE_DETAILS = [
       "We provide comprehensive office cleaning services tailored to your specific needs. Our professional team ensures that your workspace is clean, hygienic, and welcoming for both employees and visitors.",
     iconName: "office",
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/images/servicesImage/office-services.jpeg",
     features: [
       "Daily, weekly, or monthly cleaning schedules",
       "Complete disinfection of high-touch surfaces",
@@ -144,7 +144,7 @@ export const SERVICE_DETAILS = [
       "Our residential cleaning services give you back your free time while ensuring your home is spotlessly clean. From regular maintenance to deep cleaning, we've got your home covered.",
     iconName: "residential",
     image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/images/servicesImage/hotel-services.jpeg",
     features: [
       "One-time deep cleaning",
       "Regular maintenance cleaning",
@@ -163,7 +163,7 @@ export const SERVICE_DETAILS = [
       "Maintain a professional image with our commercial cleaning services for businesses of all sizes. We understand the unique needs of different commercial spaces and provide specialized cleaning solutions.",
     iconName: "commercial",
     image:
-      "https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/images/servicesImage/shop-cleaning.jpeg",
     features: [
       "Retail store cleaning",
       "Restaurant and kitchen cleaning",
@@ -182,7 +182,7 @@ export const SERVICE_DETAILS = [
       "For unique cleaning challenges, we offer specialized services that address specific needs with tailored approaches and appropriate equipment.",
     iconName: "specialized",
     image:
-      "https://images.unsplash.com/photo-1521783593447-5702b9bfd267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "/images/servicesImage/garage-services.jpeg",
     features: [
       "Garage and car park cleaning",
       "Pressure washing services",
