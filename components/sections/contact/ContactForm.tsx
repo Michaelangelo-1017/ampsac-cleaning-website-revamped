@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { SITE } from "@/lib/site-data";
 import {
   staggerContainer,
   staggerChild,
@@ -10,29 +9,62 @@ import {
   VIEWPORT_DEFAULTS,
   LUXE_EASE,
 } from "@/components/animations";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
-declare global {
-  interface Window {
-    Tally?: { loadEmbeds: () => void };
-  }
+const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_CONTACT_WEBHOOK_URL ?? "";
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
 }
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
 export default function ContactForm() {
-  useEffect(() => {
-    const existingScript = document.querySelector(
-      'script[src="https://tally.so/widgets/embed.js"]'
-    );
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.src = "https://tally.so/widgets/embed.js";
-      script.onload = () => {
-        if (window.Tally) window.Tally.loadEmbeds();
-      };
-      document.body.appendChild(script);
-    } else {
-      if (window.Tally) window.Tally.loadEmbeds();
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<FormStatus>("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!N8N_WEBHOOK_URL) {
+      setStatus("error");
+      return;
     }
-  }, []);
+
+    setStatus("loading");
+
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <motion.div
@@ -76,23 +108,91 @@ export default function ContactForm() {
 
       <motion.span variants={widthGrow} className="divider-gold-faint mb-10 origin-center" />
 
-      {/* Tally iframe — wrapper fades & slides in, iframe interior managed by Tally. */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VIEWPORT_DEFAULTS}
         transition={{ duration: 0.8, delay: 0.4, ease: LUXE_EASE }}
       >
-        <iframe
-          data-tally-src={SITE.tally.src}
-          loading="lazy"
-          width="100%"
-          height={SITE.tally.height}
-          frameBorder={0}
-          marginHeight={0}
-          marginWidth={0}
-          title={SITE.tally.title}
-        />
+        {status === "success" ? (
+          <p className="text-[0.98rem] leading-[1.85] text-onyx/80">
+            Thanks! We&apos;ll be in touch shortly.
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="contact-name">Full Name</Label>
+              <Input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                value={formData.name}
+                onChange={(event) =>
+                  setFormData((prev) => ({ ...prev, name: event.target.value }))
+                }
+                disabled={status === "loading"}
+                placeholder="Your full name"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="contact-email">Email Address</Label>
+              <Input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={(event) =>
+                  setFormData((prev) => ({ ...prev, email: event.target.value }))
+                }
+                disabled={status === "loading"}
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="contact-phone">Phone Number</Label>
+              <Input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={(event) =>
+                  setFormData((prev) => ({ ...prev, phone: event.target.value }))
+                }
+                disabled={status === "loading"}
+                placeholder="+44 7700 000000"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="contact-message">Message / Notes</Label>
+              <Textarea
+                id="contact-message"
+                name="message"
+                value={formData.message}
+                onChange={(event) =>
+                  setFormData((prev) => ({ ...prev, message: event.target.value }))
+                }
+                disabled={status === "loading"}
+                placeholder="Tell us how we can help (optional)"
+              />
+            </div>
+
+            <Button type="submit" disabled={status === "loading"}>
+              {status === "loading" ? "Sending..." : "Send Message"}
+            </Button>
+
+            {status === "error" && (
+              <p className="text-sm text-red-600" role="alert">
+                Something went wrong. Please try again.
+              </p>
+            )}
+          </form>
+        )}
       </motion.div>
     </motion.div>
   );

@@ -65,7 +65,7 @@ export default function HomeCtaSection() {
               whileTap={{ scale: 0.98 }}
               className="inline-block"
             >
-              <Link href="/contact" className="btn-luxe-outline btn-size-xl">
+              <Link href="/quote" className="btn-luxe-outline btn-size-xl">
                 Get Your Free Quote
               </Link>
             </motion.div>

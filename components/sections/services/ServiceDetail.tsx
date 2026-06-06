@@ -141,7 +141,7 @@ export default function ServiceDetail({
 
             <motion.div variants={staggerChild}>
               <Link
-                href="/contact"
+                href="/quote"
                 className="group/cta inline-flex items-center gap-3 font-sans uppercase tracking-luxe text-[0.78rem] text-gold border-b border-gold/40 pb-1 hover:border-gold transition-colors"
               >
                 Request a Quote

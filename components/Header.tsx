@@ -141,7 +141,7 @@ export default function Header() {
               className="inline-block ml-6"
             >
               <Link
-                href="/contact"
+                href="/quote"
                 className="btn-luxe-outline btn-size-md"
               >
                 Get a Quote
@@ -240,7 +240,7 @@ export default function Header() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Link
-                    href="/contact"
+                    href="/quote"
                     onClick={() => setDrawerOpen(false)}
                     className="btn-luxe-outline btn-size-md w-full"
                   >

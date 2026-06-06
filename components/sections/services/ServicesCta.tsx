@@ -84,7 +84,7 @@ export default function ServicesCta() {
             whileTap={{ scale: 0.98 }}
             className="inline-block"
           >
-            <Link href="/contact" className="btn-luxe-outline btn-size-xl">
+            <Link href="/quote" className="btn-luxe-outline btn-size-xl">
               Request a Quote
             </Link>
           </motion.div>

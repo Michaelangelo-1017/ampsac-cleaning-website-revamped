@@ -28,7 +28,7 @@ export default function ServicesPage() {
         title="Our Professional Cleaning Services"
         subtitle="Comprehensive cleaning solutions for homes, offices, and commercial spaces. We deliver exceptional results with attention to detail."
         buttonText="Request a Quote"
-        buttonLink="/contact"
+        buttonLink="/quote"
         backgroundImage={HERO_IMAGES.services}
       />
 

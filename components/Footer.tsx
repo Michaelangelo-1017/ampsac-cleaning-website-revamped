@@ -126,6 +126,7 @@ export default function Footer() {
               <FooterLink href="/services">Services</FooterLink>
               <FooterLink href="/about">About Us</FooterLink>
               <FooterLink href="/contact">Contact Us</FooterLink>
+              <FooterLink href="/quote">Get a Quote</FooterLink>
             </div>
           </motion.div>
 
