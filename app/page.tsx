@@ -27,7 +27,7 @@ export default function HomePage() {
         title="Professional Cleaning Services for Your Space"
         subtitle="Your health, our priority. Delivering exceptional cleaning solutions for homes, offices, and commercial spaces. Experience a cleaner, healthier environment with AMPSAC City Clean."
         buttonText="Get a Free Quote"
-        buttonLink="/contact"
+        buttonLink="/quote"
         videoSrc="/video/back.mp4"
       />
       <HomeAboutSection />
